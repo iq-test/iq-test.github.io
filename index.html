@@ -1,0 +1,25 @@
+<?php
+
+$tiktok = $_GET['sub3'];
+$ga = urldecode($_GET['sub4']);
+$fb = $_GET['sub5'];
+
+$splitGA = explode('/', $ga);
+
+?> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="favicon.ico">
+  <title>Quiz</title>
+  <?php if (!empty($fb)) { ?> <script>!function(e,t,n,c,o,u,a){e.fbq||(o=e.fbq=function(){o.callMethod?o.callMethod.apply(o,arguments):o.queue.push(arguments)},e._fbq||(e._fbq=o),o.push=o,o.loaded=!0,o.version="2.0",o.queue=[],(u=t.createElement(n)).async=!0,u.src="https://connect.facebook.net/en_US/fbevents.js",(a=t.getElementsByTagName(n)[0]).parentNode.insertBefore(u,a))}(window,document,"script"),fbq("init","<?php echo $fb; ?>"),fbq("track","PageView")</script> <?php } ?> <?php if (!empty($ga)) { ?> <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $splitGA[0]; ?>"></script> <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","<?php echo $splitGA[0]; ?>")</script> <script>function gtag_report_conversion(n){return gtag("event","conversion",{send_to:"<?php echo $ga; ?>",event_callback:function(){void 0!==n&&(window.location=n)}}),!1}</script> <?php } ?> <?php if (!empty($tiktok)) { ?> <script>!function(t,e,n){t.TiktokAnalyticsObject=n;var o=t.ttq=t.ttq||[];o.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],o.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var a=0;a<o.methods.length;a++)o.setAndDefer(o,o.methods[a]);o.instance=function(t){for(var e=o._i[t]||[],n=0;n<o.methods.length;n++)o.setAndDefer(e,o.methods[n]);return e},o.load=function(t,e){var a="https://analytics.tiktok.com/i18n/pixel/events.js";o._i=o._i||{},o._i[t]=[],o._i[t]._u=a,o._t=o._t||{},o._t[t]=+new Date,o._o=o._o||{},o._o[t]=e||{};var i=document.createElement("script");i.type="text/javascript",i.async=!0,i.src=a+"?sdkid="+t+"&lib="+n;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(i,r)},o.load("<?php echo $tiktok; ?>"),o.page()}(window,document,"ttq")</script> <?php } ?>
+<link href="css/app.css" rel="preload" as="style"><link href="js/app.js" rel="preload" as="script"><link href="js/chunk-vendors.js" rel="preload" as="script"><link href="css/app.css" rel="stylesheet"></head>
+<body>
+<?php if (!empty($fb)) { ?> <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=<?php echo $fb; ?>&ev=PageView&noscript=1"/></noscript> <?php } ?> 
+<div id="app"></div>
+<input type="hidden" name="sub1" value="{subid}">
+<script type="text/javascript" src="js/chunk-vendors.js"></script><script type="text/javascript" src="js/app.js"></script></body>
+</html>
